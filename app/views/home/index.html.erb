@@ -1,0 +1,11 @@
+  <% if user_signed_in? %>
+<%= image_tag(current_user.image, alt: "") %>
+<%= current_user.name %>
+
+
+  <% else %>
+  <h3>Home</h3>	
+  <%= link_to 'Login with Facebook', '/auth/facebook/' %>
+  <br>
+  <%= link_to 'Login with Linked In', '/auth/linkedin/' %>
+  <% end  %>
