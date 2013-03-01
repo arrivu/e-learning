@@ -1,41 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= content_for?(:title) ? yield(:title) : "E-learning" %></title>
-  <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Myapp" %>">
-  <%= stylesheet_link_tag "application", :media => "all" %>
+  <title><%= full_title(yield(:title)) %></title>
+  <%= stylesheet_link_tag "application", media: "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-  <%= yield(:head) %>
+  <%= render 'layouts/shim' %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= favicon_link_tag 'favicon_normal.ico' %>
 </head>
-<body class="<%= controller_name %> <%= action_name %>">
-  <div class="navbar navbar-fixed-top">
-    <nav class="navbar-inner">
-      <div class="container">
-        <%= render 'layouts/navigation' %>
-      </div>
-    </nav>
-  </div>
-  <div id="main" role="main">
-    <div class="container">
-      <div class="content">
-       <div class="row">
-        <div class="span12">
-          <%= render 'layouts/messages' %>
-          <%= yield %>
-        </div>
-      </div>
-      <footer>
-      </footer>
-    </div>
-  </div> <!--! end of .container -->
-</div> <!--! end of #main -->
-<br>
+<body>
+  <% if check_null(yield(:effectingHeader)) %>
+  <%= render 'layouts/header' %>
+  <% else %>
+  <!-- Do Nothing -->
+  <% end %>
+  <div class="container">
+    
+    <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
+    <%= yield %>
+    <%= render 'layouts/footer' %>
 
-<div class="container">
-  <%= debug(params) %>
-  
-</div>
+  </div>
 </body>
 </html>

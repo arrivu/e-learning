@@ -27,6 +27,11 @@
                     <%= gravatar_for_with_size current_user, "15x15" %> <%= current_user.name %>  <b class="caret"></b>
                   </a>
                   <ul class="dropdown-menu" id="droplinks">
+                      <% if current_user.has_role? :admin %>
+            <li>
+              <%= link_to 'Admin', users_path %>
+            </li>
+            <% end %>
                   <li><%= link_to "Profile", current_user %></li>
                   <li class="divider"></li>
                   <li>
