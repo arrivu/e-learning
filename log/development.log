@@ -36651,3 +36651,4 @@ Processing by ScreensController#about as HTML
   Rendered layouts/_navigation.html.erb (7.2ms)
   Rendered layouts/_messages.html.erb (0.2ms)
 Completed 200 OK in 264ms (Views: 262.7ms | ActiveRecord: 0.8ms)
+Connecting to database specified by database.yml
