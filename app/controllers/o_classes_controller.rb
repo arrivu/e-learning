@@ -1,4 +1,5 @@
 class OClassesController < ApplicationController
+	
 before_filter :signed_in_user, only: [:index, :create, :edit,:update,:delete]
 
   def index
