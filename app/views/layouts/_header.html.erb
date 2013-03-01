@@ -1,103 +1,49 @@
-<header class="navbar  navbar-fixed-top navbar-inverse ">
-	<div class="navbar-inner">
-		<div class="container">
-			<%= link_to image_tag("cap.png" ,class: 'logosize'), root_path, id: "logo" %>
-			<nav>
-				<ul class="nav pull-right">
-					<li><%= link_to "Home", root_path %></li>
-					<li><%= link_to "Help", help_path %></li>
-					<% if signed_in? %>
-					<li><%= link_to "Users", users_path %></li>
+<div class="navbar navbar-fixed-top ds-dragover-1" >
+     <div class="navbar-inner">
+        <div class="container">
+          <!-- <a class="brand" href=""><strong class="curr">SmartCoach</strong></a> -->
+          <%= link_to "SmartCoach", root_path, class: "curr brand" %>
+          	<div class="navbar-content-1">
+          		
+
+	            <ul class="nav pull-right">
+	              <!-- <li class="active"> -->
+	             <li>
+	                <%= link_to "Home", root_path %>
+	              </li>
+	              <li>
+	                <%= link_to "About", about_path %>
+	              </li>
+	  
+	            <% if signed_in? %>
 					<li id="fat-menu" class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<%= gravatar_for_with_size current_user, "15x15" %> <%= current_user.name %> <b class="caret"></b>
 						</a>
-						<ul class="dropdown-menu">
+						<ul id="droplinks" class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+							<% if current_user.has_role? :admin %>
+            <li>
+              <%= link_to 'Admin', users_path %>
+            </li>
+            <% end %>
 							<li><%= link_to "Profile", current_user %></li>
-							<li><%= link_to "Settings",  edit_user_path(current_user) %></li>
 							<li class="divider"></li>
 							<li>
-								<%= link_to "Sign out", signout_path, method: "delete" %>
+							<%= link_to "Sign out", destroy_user_session_path, method: "delete" %>
 							</li>
 						</ul>
 					</li>
-				</ul>
 				<% else %>
+					<li><%= link_to "Sign in", new_user_session_path %></li>
+					<li>
+			            <%= link_to "Subscribe", new_user_registration_path %>
+			        </li>
+				<% end %>
 
-
-				<li id="fat-menu" class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b>
-					</a>
-					<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-					
-					<div  class="modal-body " >
-						<%= form_for(:session, url: sessions_path) do |f| %>
-						<%= f.label :email %>
-						<%= f.text_field :email %>
-						<%= f.label :password %>
-						<%= f.password_field :password %>
-				<%= f.submit "Sign in", class: "btn  btn-primary btn-inverse" %>
-						<li class="divider"></li>
-						
-						<% end %>
-						<p> <%= link_to "Sign up now!", signup_path %></p>
-					</div>
-					</li>
-				</ul>
-			</li>
-			<% end %>
-
-
-
-
-		</ul>
-	</nav>
+	              
+			
+	            </ul>
+	        </div>
+        </div>
+    </div>
 </div>
-
-</div>
-</header>	
-<% unless signed_in? %>
-<div class="row1">
-	<aside class="span2">
-
-<table class="table table-hover hero-unit" >
-
- <tr><td>
-
- 	<a href="#myModal" role="button" class="btn btn-block btn-info" data-toggle="modal">Signup</a>
- 
-<!-- Modal -->
-<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 align="center">New user registration</h3>
-  </div>
-  <div class="modal-body">
-
-
-
-
-		<%= form_for(:user, url: users_path) do |f| %>
-		<%= f.label :name %>
-		<%= f.text_field :name %>
-		<%= f.label :email %>
-		<%= f.text_field :email %>
-		<%= f.label :password %>
-		<%= f.password_field :password %>
-		<%= f.label :password_confirmation, "Confirmation" %>
-		<%= f.password_field :password_confirmation %>
-		
-  </div>
-  <div class="modal-footer">
-    <button class="btn  btn-primary btn-inverse" data-dismiss="modal" aria-hidden="true">Close</button>
-    <%= f.submit "Create my account", class: "btn  btn-primary btn-success " %>
-  </div>
-  		<% end %>
-</div></td></tr>
- <tr><td><a href="#myModal1" role="button" class="btn btn-block btn-info" data-toggle="modal">Help</a></td></tr>
- <tr><td><a href="#myModal2" role="button" class="btn btn-block btn-info" data-toggle="modal">Galary</a></td></tr>
- <tr><td><a href="#myModal" role="button" class="btn btn-block btn-info" data-toggle="modal">Login</a></td></tr>
-</table>
-</aside>
-</div>
-<% end %>
-
