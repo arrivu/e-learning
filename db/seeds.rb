@@ -12,7 +12,7 @@ Role.create([
 	{ :name => 'admin' }, 
 	{ :name => 'student' }, 
 	{ :name => 'teacher' },
-	{ :name => 'ta' },
+	{ :name => 'TA' },
 	{ :name => 'designer' }
 	], :without_protection => true)
 puts 'SETTING UP DEFAULT USER LOGIN'

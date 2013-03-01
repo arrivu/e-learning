@@ -13,7 +13,9 @@ gem 'omniauth-facebook'
 gem 'omniauth-linkedin'
 gem 'oauth2'
 gem 'best_in_place'
-
+gem 'will_paginate', '3.0.3'
+gem 'bootstrap-will_paginate', '0.0.6'
+gem 'faker', '1.0.1'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'

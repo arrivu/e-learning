@@ -11,13 +11,88 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130227170215) do
+ActiveRecord::Schema.define(:version => 20130301090210) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
     t.string   "provider"
     t.string   "uid"
     t.string   "token"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "blogs", :force => true do |t|
+    t.string   "title"
+    t.string   "author"
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+    t.text     "content"
+    t.integer  "ispublished",  :default => 0
+    t.string   "releasemonth", :default => "December"
+    t.string   "image"
+    t.integer  "user_id"
+  end
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "courses", :force => true do |t|
+    t.string   "title"
+    t.string   "author"
+    t.string   "image"
+    t.text     "desc"
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+    t.integer  "user_id"
+    t.integer  "ispublished",  :default => 0
+    t.string   "releasemonth", :default => "December"
+  end
+
+  add_index "courses", ["title", "author"], :name => "index_courses_on_title_and_author", :unique => true
+
+  create_table "faqs", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "order_id"
+    t.text     "question"
+    t.text     "answer"
+  end
+
+  create_table "groupings", :force => true do |t|
+    t.integer  "group_id"
+    t.integer  "tutorial_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "groups", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "o_classes", :force => true do |t|
+    t.string   "name"
+    t.string   "desc"
+    t.integer  "no_of_days"
+    t.integer  "no_of_hours_per_day"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.time     "start_time_of_day"
+    t.time     "end_time_of_day"
+    t.integer  "no_of_student_per_class"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+    t.integer  "user_id"
+  end
+
+  create_table "relationships", :force => true do |t|
+    t.integer  "course_id"
+    t.integer  "topic_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -33,6 +108,41 @@ ActiveRecord::Schema.define(:version => 20130227170215) do
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
 
+  create_table "taggings", :force => true do |t|
+    t.integer  "blog_id"
+    t.integer  "tag_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "tags", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "topics", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "tutorials", :force => true do |t|
+    t.string   "title"
+    t.string   "author"
+    t.string   "image"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+    t.integer  "user_id"
+    t.integer  "ispublished",    :default => 0
+    t.string   "releasemonth",   :default => "December"
+    t.text     "desc"
+    t.string   "difficulty"
+    t.integer  "estimated_time"
+  end
+
+  add_index "tutorials", ["title", "author"], :name => "index_tutorials_on_title_and_author", :unique => true
+
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",       :null => false
     t.string   "encrypted_password",     :default => "",       :null => false
@@ -46,10 +156,13 @@ ActiveRecord::Schema.define(:version => 20130227170215) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                                   :null => false
     t.datetime "updated_at",                                   :null => false
-    t.string   "name"
     t.binary   "image"
     t.string   "provider",               :default => "signup"
     t.string   "phone"
+    t.string   "user_type"
+    t.string   "sub_plan"
+    t.string   "user_desc"
+    t.string   "name"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
