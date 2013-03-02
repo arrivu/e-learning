@@ -6,6 +6,9 @@ gem "figaro", ">= 0.5.3"
 gem "bootstrap-sass", ">= 2.3.0.0"
 gem "devise", ">= 2.2.3"
 gem "cancan", ">= 1.6.8"
+
+gem 'devise_cas_authenticatable'
+
 gem "rolify", ">= 3.2.0"
 gem "simple_form", ">= 2.0.4"
 gem 'omniauth'
@@ -22,6 +25,9 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
 end
+
+gem 'activeadmin', github: 'Daxter/active_admin', branch: 'bugfix/1773-execjs'
+gem "meta_search",    '>= 1.1.0.pre'
 
 group :production do
 gem 'pg', '0.12.2'
