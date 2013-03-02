@@ -1,5 +1,4 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
-	OmniAuth.config.full_host = "http://localhost:3000"
  if Rails.env.production?
    provider :facebook, '  151537311672530', 'ed4a4725a9ff31f3ead5d201ddcb7476'
    provider :linkedin, 'gl1h6zyltlem', "wIfucZImlYGqFO3r"
