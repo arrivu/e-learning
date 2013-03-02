@@ -22,11 +22,9 @@
         <% if signed_in? && current_user.user_type == 1 #Teacher %>
         <p><%= link_to "Add New Course", new_course_path , class: "move-to-right-top"%></p>
         <% end %>
-
         <%= will_paginate %>
         <%= render @courses %>
         <%= will_paginate %>
-
         <% @courses.each do |course| %>
         <% if ((course.id % @countCoursesPerPage) == 0 ) %>
         <% if signed_in? && current_user.user_type == 1 #Teacher %>
@@ -34,7 +32,6 @@
         <% end %>
         <% end %>
         <% end %>
-
         <div class="clearfix"></div>
       </div>
       <% else %>
@@ -44,8 +41,8 @@
       <% end %>
     </div><!-- <div class="span8"> -->
 
-    <div class="span3">
-      <div class="">
+    <div class="span4">
+      <div class="well">
 
                <!--  <form class="navbar-search pull-left">
                   <input type="text" class="search-query" placeholder="Search">
