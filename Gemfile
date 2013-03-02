@@ -14,7 +14,9 @@ gem "simple_form", ">= 2.0.4"
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-linkedin'
-gem "omniauth-google-oauth2"
+
+gem 'omniauth-google-oauth2'
+
 gem 'oauth2'
 gem 'best_in_place'
 gem 'will_paginate', '3.0.3'
