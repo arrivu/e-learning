@@ -1,5 +1,7 @@
 
 <div class="container">
+ 
+
   <div class="row">
     <div class="span8">
       <% if @courses.size >= 1 %>
@@ -9,9 +11,7 @@
         <p><%= link_to "Add New Course", new_course_path , class: "move-to-right-top"%></p>
         <% end %>
         <%= will_paginate %>
-       
-          <%= render @courses %>
-      
+        <%= render @courses %>
         <%= will_paginate %>
         <% @courses.each do |course| %>
         <% if ((course.id % @countCoursesPerPage) == 0 ) %>

@@ -9,7 +9,7 @@
 #
 
 class Topic < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :name, :desc
   has_many :relationships
   has_many :courses, through: :relationships
 end
