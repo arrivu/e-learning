@@ -1,36 +1,29 @@
 
 <div class="container">
-  <div class="row">
-    <div class="span8">
-      <% if @courses.size >= 1 %>
+ <div class="row">
+  <div class="span8">
+    <% if @courses.size >= 1 %>
+    <div class="well">
 
-      <div class="well">
-        <% if signed_in? && current_user.user_type == 1 #Teacher %>
-        <p><%= link_to "Add New Course", new_course_path , class: "move-to-right-top"%></p>
-        <% end %>
-        <%= will_paginate %>
-       
-          <%= render @courses %>
-      
-        <%= will_paginate %>
-        <% @courses.each do |course| %>
-        <% if ((course.id % @countCoursesPerPage) == 0 ) %>
-        <% if signed_in? && current_user.user_type == 1 #Teacher %>
-        <p><%= link_to "Add New Course", new_course_path , class: "move-to-right-bottom"%></p>
-        <% end %>
-        <% end %>
-        <% end %>
-        <div class="clearfix"></div>
-      </div>
-      <% else %>
-      <div class="alert alert-error">
-        No courses published yet. Check upcoming courses!!!!
-      </div>
+      <%= will_paginate %>
+      <%= render @courses %>
+      <%= will_paginate %>
+      <% @courses.each do |course| %>
+      <% if ((course.id % @countCoursesPerPage) == 0 ) %>
+    
       <% end %>
-    </div><!-- <div class="span8"> -->
+      <% end %>
+      <div class="clearfix"></div>
+    </div>
+    <% else %>
+    <div class="alert alert-error">
+      No courses published yet. Check upcoming courses!!!!
+    </div>
+    <% end %>
+  </div><!-- <div class="span8"> -->
 
-    <div class="span4">
-      <div class="well">
+  <div class="span4">
+    <div class="well">
 
                <!--  <form class="navbar-search pull-left">
                   <input type="text" class="search-query" placeholder="Search">
@@ -65,9 +58,7 @@
                         <br/>
                           <!-- <button id="createTopicbottom" class="btn btn-info" type="button">Add new Topic
                         </button> -->
-                        <% if signed_in? && current_user.user_type == 3 #Admin %>
-                        <%= link_to "Manage Category", topics_path, class: "btn btn-info" %>
-                        <% end %>
+                       
                       </div>
 
                     </div><!-- <div class="tab-pane active" id="categories"> -->

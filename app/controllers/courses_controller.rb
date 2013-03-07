@@ -1,11 +1,11 @@
 class CoursesController < ApplicationController
 
-before_filter :signed_in_user, only: [:create, :edit,:update,:delete]
+before_filter :current_user, only: [:create, :edit,:update,:delete]
 
 
 	def index
 		@countCoursesPerPage = 5
-    	@courses = Course.where(ispublished: 1).paginate(page: params[:page], per_page: 5)
+    @courses = Course.where(ispublished: 1).paginate(page: params[:page], per_page: 5)
 		@topics = Topic.order(:name)
   	end
 
