@@ -4,13 +4,29 @@
   <div class="span8">
     <% if @courses.size >= 1 %>
     <div class="well">
-
       <%= will_paginate %>
       <%= render @courses %>
       <%= will_paginate %>
       <% @courses.each do |course| %>
       <% if ((course.id % @countCoursesPerPage) == 0 ) %>
-    
+      <div class="well">
+        
+        <%= will_paginate %>
+       
+          <%= render @courses %>
+      
+        <%= will_paginate %>
+        <% @courses.each do |course| %>
+        <% if ((course.id % @countCoursesPerPage) == 0 ) %>
+        
+        <% end %>
+        <% end %>
+        <div class="clearfix"></div>
+      </div>
+      <% else %>
+      <div class="alert alert-error">
+        No courses published yet. Check upcoming courses!!!!
+      </div>
       <% end %>
       <% end %>
       <div class="clearfix"></div>
