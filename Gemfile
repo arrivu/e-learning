@@ -6,9 +6,7 @@ gem "figaro", ">= 0.5.3"
 gem "bootstrap-sass", ">= 2.3.0.0"
 gem "devise", ">= 2.2.3"
 gem "cancan", ">= 1.6.8"
-
 gem 'devise_cas_authenticatable'
-
 gem "rolify", ">= 3.2.0"
 gem "simple_form", ">= 2.0.4"
 gem 'omniauth'
@@ -33,7 +31,6 @@ gem "meta_search",    '>= 1.1.0.pre'
 
 group :production do
 	gem 'pg', '0.12.2'
-
 end
 
 gem 'sqlite3', :group => :development
@@ -48,3 +45,9 @@ gem "cucumber-rails", ">= 1.3.0", :group => :test, :require => false
 gem "launchy", ">= 2.2.0", :group => :test
 gem "capybara", ">= 2.0.2", :group => :test
 gem "factory_girl_rails", ">= 4.2.0", :group => [:development, :test]
+
+gem 'rest-client', '1.6.7'
+gem 'json'
+gem "rails_config"
+
+

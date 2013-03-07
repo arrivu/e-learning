@@ -1,20 +1,6 @@
 
 <div class="container">
   <div class="row">
-    <ul class="nav nav-pills .pull-right">
-      <li class="active">
-        <%= link_to "Courses", courses_path %>
-      </li>
-       <% if signed_in? %>
-            <li><%= link_to "Online Classes", o_classes_path %></li>
-          <% end %>
-          <li><%= link_to "Blog", blogs_path %></li>
-     
-    
-    </ul>
-  </div>
-
-  <div class="row">
     <div class="span8">
       <% if @courses.size >= 1 %>
 
@@ -23,7 +9,9 @@
         <p><%= link_to "Add New Course", new_course_path , class: "move-to-right-top"%></p>
         <% end %>
         <%= will_paginate %>
-        <%= render @courses %>
+       
+          <%= render @courses %>
+      
         <%= will_paginate %>
         <% @courses.each do |course| %>
         <% if ((course.id % @countCoursesPerPage) == 0 ) %>

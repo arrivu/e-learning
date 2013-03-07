@@ -9,77 +9,77 @@ task populate: :environment do
 # #       t.string :desc
 
 
-		users_hash = {
+users_hash = {
 			1 => [Faker::Name.name, #Name
 				Faker::Internet.free_email, #email
 				"password1", #password
 				1, #user_type
 				1, #sub_plan
 				"This is a dummy message about user. This will tell soemthing about this user."
-			],
+				],
 			2 => [Faker::Name.name, #Name
 				Faker::Internet.free_email, #email
 				"password2", #password
 				1, #user_type
 				2, #sub_plan
 				"This is a dummy message about user. This will tell soemthing about this user."
-			],
+				],
 			3 => [Faker::Name.name, #Name
 				Faker::Internet.free_email, #email
 				"password3", #password
 				2, #user_type
 				1, #sub_plan
 				"This is a dummy message about user. This will tell soemthing about this user."
-			],
+				],
 			4 => [Faker::Name.name, #Name
 				Faker::Internet.free_email, #email
 				"password4", #password
 				3, #user_type
 				2, #sub_plan
 				"This is a dummy message about user. This will tell soemthing about this user."
-			],
+				],
 			5 => [Faker::Name.name, #Name
 				Faker::Internet.free_email, #email
 				"password5", #password
 				2, #user_type
 				2, #sub_plan
 				"This is a dummy message about user. This will tell soemthing about this user."
-			],
+				],
 			6 => [Faker::Name.name, #Name
 				Faker::Internet.free_email, #email
 				"password6", #password
 				2, #user_type
 				2, #sub_plan
 				"This is a dummy message about user. This will tell soemthing about this user."
-			],
+				],
 			7 => [Faker::Name.name, #Name
 				Faker::Internet.free_email, #email
 				"password7", #password
 				2, #user_type
 				2, #sub_plan
 				"This is a dummy message about user. This will tell soemthing about this user."
-			],
+				],
 			8 => [Faker::Name.name, #Name
 				Faker::Internet.free_email, #email
 				"password8", #password
 				2, #user_type
 				2, #sub_plan
 				"This is a dummy message about user. This will tell soemthing about this user."
-			],
+				],
 			9 => [Faker::Name.name, #Name
 				Faker::Internet.free_email, #email
 				"password9", #password
 				2, #user_type
 				2, #sub_plan
 				"This is a dummy message about user. This will tell soemthing about this user."
-			],
+				],
 			10 => [Faker::Name.name, #Name
 				Faker::Internet.free_email, #email
 				"password10", #password
 				2, #user_type
 				2, #sub_plan
 				"This is a dummy message about user. This will tell soemthing about this user."
-			],
+				],
 			11 => ["Ankit Gupta", #Name
 				"ankithbti007@gmail.com", #email
 				"password123", #password
@@ -89,15 +89,15 @@ task populate: :environment do
 			]
 		}
 
-users_hash.each do |key, array|
-	User.create!(name: array[0],
-		email: array[1],
-		password: array[2],
-		password_confirmation: array[2],
-		user_type: array[3],
-		sub_plan: array[4],
-		user_desc: array[5])
-end
+		users_hash.each do |key, array|
+			User.create!(name: array[0],
+				email: array[1],
+				password: array[2],
+				password_confirmation: array[2],
+				user_type: array[3],
+				sub_plan: array[4],
+				user_desc: array[5])
+		end
 
 
 		#FAQ block for test data
@@ -179,17 +179,56 @@ end
 		# desc: "Example Desc")
 
 		# Topic categories for Courses
-		topics_arr = ["Web Development", 
-			"Web Design", 
-			"Software Development",
-			"Business",
-			"Photoshop",
-			"Mobile development"
-		]
+		# topics_arr = ["", 
+		# 	"Web Design", 
+		# 	"Software Development",
+		# 	"Business",
+		# 	"Photoshop",
+		# 	"Mobile development"
+		# ]
 		
-		topics_arr.each do |topic|
-			Topic.create!(name: topic)
-		end
+
+		# topics_arr.each do |topic|
+		# 	Topic.create!(name: topic)
+		# end
+
+	 #  #Topic Description
+	 #  topics_desc_arr = ["Topic Web Development", 
+		# 	"Topic Web Design", 
+		# 	"Topic Software Development",
+		# 	,
+		# 	"Topic Photoshop",
+		# 	"Topic Mobile development"
+		# ]
+
+		# topics_desc_arr.each do |desc|
+		# 	Topic.create!(desc: desc)
+		# end
+
+		topics_hash = {
+			1 => ["Web Development",
+				"Topic Web Development"],
+				2 => ["Web Design",
+					"Topic Web Design"],
+					3 => ["Software Development",
+						"Topic Software Development"],
+						4 => ["Business",
+							"Topic Business"],
+							5 => ["Photoshop",
+								"Topic Photoshop"],
+								6 => ["Mobile development",
+									"Topic Mobile development"
+									]}
+
+									topics_hash.each do |key, array|
+										Topic.create!(
+											name: array[0],
+											desc: array[1],
+										)
+											end
+
+
+
 
 		# Group categories for tutorials
 		groups_arr = ["Web Development", 

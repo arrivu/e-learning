@@ -1,3 +1,15 @@
+<div class="row">
+<div class="span12">
+<ul class="nav nav-pills .pull-left">
+  <li >
+<%= link_to "Users", users_path %>
+</li><li class="active">
+<%= link_to "Add New Course", new_course_path %>
+</li><li>
+ <%= link_to "Manage Category", topics_path %>
+  </li><li >
+ <%= link_to "New Category",new_topic_path %>
+ </ul>
 <% provide(:title, 'Create Course') %>
 <div class="row">
 <div class="span4 offset3">
@@ -27,3 +39,5 @@
 <center>
 <p><%= link_to "Back to Courses", courses_path %></p>
 </center>
+</div>
+</div>

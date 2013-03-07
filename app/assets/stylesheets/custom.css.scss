@@ -43,21 +43,22 @@ $grayMediumLight: #eaeaea;
 
 }
 
+
 .well{ background-color:#efeddf}
 
 
 
-.well-course:hover{
-  -webkit-box-shadow: 0px 8px 0px 0px #3A87AD;
-  -moz-box-shadow: 0px 8px 0px 0px #3A87AD;
-  box-shadow: 0px 8px 0px 0px #3A87AD;
-            // font-weight: bold;
+// .well-course:hover{
+//   -webkit-box-shadow: 0px 8px 0px 0px #3A87AD;
+//   -moz-box-shadow: 0px 8px 0px 0px #3A87AD;
+//   box-shadow: 0px 8px 0px 0px #3A87AD;
+//             // font-weight: bold;
 
-          }
+//           }
 
-          .well-course h4 img{
-            float:left;
-            margin-right:20px;
+.well-course h4 img{
+  float:left;
+  margin-right:20px;
       /*border-color: #3A87AD;
       border-width:5px;
       border-style: solid;*/
@@ -489,4 +490,8 @@ input, textarea, select, .uneditable-input {
                     margin-left:20px;
                     margin-bottom: 0px;
                     padding:0px;
+                  }
+
+                  .thumbnail:hover{
+                    border-color: #0088cc;
                   }

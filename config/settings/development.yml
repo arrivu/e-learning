@@ -1,0 +1,4 @@
+cas:
+  url: https://localhost:8888
+  login_path: '/api-login'
+  logout_path: '/api-logout'

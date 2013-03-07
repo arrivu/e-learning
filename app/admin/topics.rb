@@ -1,4 +1,8 @@
+ class Topic < ActiveRecord::Base
+ attr_accessible :desc , :name
+end
 ActiveAdmin.register Topic do
+ 
   index do                            
     column :name                     
     default_actions                   

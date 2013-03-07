@@ -1,8 +1,16 @@
-
-<h3>Users</h3>
 <div class="row">
-<div class="span8">
-<table class="table table-condensed">
+<div class="span12">
+<ul class="nav nav-pills .pull-left">
+  <li class="active">
+<%= link_to "Users", users_path %>
+</li><li>
+<%= link_to "Add New Course", new_course_path %>
+</li><li>
+ <%= link_to "Manage Category", topics_path %>
+  </li><li >
+ <%= link_to "New Category",new_topic_path %>
+ </ul>
+<table class="table table-condensed table-hover">
   <thead>
     <tr>
       <th>Username</th>
