@@ -5,9 +5,7 @@
       <% if @courses.size >= 1 %>
 
       <div class="well">
-        <% if signed_in? && current_user.user_type == 1 #Teacher %>
-        <p><%= link_to "Add New Course", new_course_path , class: "move-to-right-top"%></p>
-        <% end %>
+        
         <%= will_paginate %>
        
           <%= render @courses %>
@@ -15,9 +13,7 @@
         <%= will_paginate %>
         <% @courses.each do |course| %>
         <% if ((course.id % @countCoursesPerPage) == 0 ) %>
-        <% if signed_in? && current_user.user_type == 1 #Teacher %>
-        <p><%= link_to "Add New Course", new_course_path , class: "move-to-right-bottom"%></p>
-        <% end %>
+        
         <% end %>
         <% end %>
         <div class="clearfix"></div>
@@ -65,9 +61,7 @@
                         <br/>
                           <!-- <button id="createTopicbottom" class="btn btn-info" type="button">Add new Topic
                         </button> -->
-                        <% if signed_in? && current_user.user_type == 3 #Admin %>
-                        <%= link_to "Manage Category", topics_path, class: "btn btn-info" %>
-                        <% end %>
+                       
                       </div>
 
                     </div><!-- <div class="tab-pane active" id="categories"> -->
