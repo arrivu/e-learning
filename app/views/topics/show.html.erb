@@ -1,21 +1,6 @@
 <% provide(:title, 'Courses for ' + @topic.name) %>
 <%- model_class = Topic -%>
 <div class="container">
-
-  <div class="row">
-        <ul class="nav nav-pills .pull-right">
-          <li class="active">
-            <%= link_to "Courses", courses_path %>
-          </li>
-          <li><%= link_to "Tutorials", tutorials_path %></li>
-          <% if signed_in? %>
-            <li><%= link_to "Online Classes", o_classes_path %></li>
-          <% end %>
-          <li><%= link_to "Blog", blogs_path %></li>
-           <li ><%= link_to "Coaches", users_path %></li>
-        </ul>
-      </div>
-
   <div class="page-header">
     <% @topicStructure = @topic.name + " ( #{@topic.courses.where(ispublished: 1).size} )" %>
     <h3>Courses related to category: <%= @topicStructure %></h3>
