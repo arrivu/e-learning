@@ -25,14 +25,9 @@ group :assets do
 	gem 'coffee-rails', '~> 3.2.1'
 	gem 'uglifier', '>= 1.0.3'
 end
-
-gem 'activeadmin', github: 'Daxter/active_admin', branch: 'bugfix/1773-execjs'
-gem "meta_search",    '>= 1.1.0.pre'
-
 group :production do
 	gem 'pg', '0.12.2'
 end
-
 gem 'sqlite3', :group => :development
 gem "quiet_assets", ">= 1.0.1", :group => :development
 gem "better_errors", ">= 0.6.0", :group => :development
