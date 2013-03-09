@@ -1,5 +1,6 @@
 class AuthenticationController < ApplicationController
-  
+  include CasHelper
+
   def create
     auth = request.env["omniauth.auth"]
 
@@ -37,23 +38,23 @@ class AuthenticationController < ApplicationController
 
       def login_and_redirect_user(user)
         #first sign-in to cas
-        cas_sign_in(user)
+        user_cas_sign_in(user)
         # sign-in the user in devise
         sign_in_and_redirect(:user, user)
       end
 
-      def cas_sign_in(user)
-        loginResponse = CASHelper::CASAPI.login(user.email, user.encrypted_password)
-        tgt = loginResponse.tgt
-        # Sets a cookie that expires in 1 hour.
-        cookies[:login] = { :value => "#{tgt}", :expires => 1.hour.from_now }
-        #cookies.permanent[:cas_token] = tgt
-      end
-
-      def cas_sign_out(user)
-        tgt = cookies['tgt']
-        CASHelper::CASAPI.logout(tgt)
-        cookies.delete('tgt')
+      def user_cas_sign_in (user)
+        tgt = nil
+        begin
+          tgt = cas_sign_in(user)  if cas_enable?
+          # Sets a cookie that expires in 1 hour.
+          #cookies[:tgt] = { :value => "#{tgt}", :expires => 1.hour.from_now }
+          cookies[:tgt] = tgt
+        rescue Exception => e
+          puts e.inspect
+          puts "There is some error to sing_in to cas using user : #{user.inspect}"
+          raise
+        end
       end
 
 end

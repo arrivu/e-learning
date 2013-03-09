@@ -45,4 +45,7 @@ gem 'rest-client', '1.6.7'
 gem 'json'
 gem "rails_config"
 
+group :development do
+  gem 'pg', '0.12.2'
+end
 

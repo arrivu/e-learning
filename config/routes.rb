@@ -19,7 +19,7 @@ Myapp::Application.routes.draw do
   match '/construction', :to => 'screens#construction'
 
   
-  devise_for :users
+  devise_for :users, controllers: { registrations: "registrations",  sessions: "sessions"   }
   resources :users
   match '/auth/:provider/callback' => 'authentication#create'
 end

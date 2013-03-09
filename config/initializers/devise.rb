@@ -238,4 +238,31 @@ Devise.setup do |config|
   # When using omniauth, Devise cannot automatically set Omniauth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = "/my_engine/users/auth"
+
+
+  #Warden::Manager.after_authentication do |user,auth,opts|
+  #  #call cas sign to create the cas ticket
+  #  tgt =  auth.cookies[:tgt]
+  #  tgt = user.cas_sign_in(user) if  user.cas_enable?
+  #  # Sets a cookie that expires in 1 hour.
+  #  #cookies[:tgt] = { :value => "#{tgt}", :expires => 1.hour.from_now }
+  #  auth.cookies.permanent[:tgt] = tgt if tgt
+  #end
+
+  #Warden::Manager.after_set_user do |user,auth,opts|
+  #  #puts user.inspect
+  #  #call cas sign to create the cas ticket
+  #  tgt =  auth.cookies[:tgt]
+  #  tgt = user.cas_sign_in(user) if  user.cas_enable?
+  #  # Sets a cookie that expires in 1 hour.
+  #  #cookies[:tgt] = { :value => "#{tgt}", :expires => 1.hour.from_now }
+  #  auth.cookies.permanent[:tgt] = tgt if tgt
+  #end
+
+  #Warden::Manager.before_logout do |user,auth,opts|
+  #  tgt =  auth.cookies[:tgt]
+  #  user.cas_sign_out_tgt(tgt)
+  #  auth.cookies.delete :tgt
+  #end
+
 end
