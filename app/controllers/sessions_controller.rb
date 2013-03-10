@@ -40,11 +40,11 @@ class SessionsController < Devise::SessionsController
     #cas sign_out
     tgt = cookies['tgt']
     begin
-      cas_sign_out_tgt(tgt) if  cas_enable?
+      cas_sign_out_tgt(tgt) if cas_enable?
       cookies.delete :tgt
     rescue  Exception => e
       puts e.inspect
-      puts "There is some error to sign_out from cas using user : #{user.to_s}"
+      puts "There is some error to sign_out from cas using user email : #{current_user.email} and tgt : #{tgt}"
     end
   end
 
