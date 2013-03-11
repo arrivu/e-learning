@@ -1,13 +1,13 @@
 class CoursesController < ApplicationController
 
-before_filter :current_user, only: [:create, :edit,:update,:delete]
+	before_filter :current_user, only: [:create, :edit,:update,:delete]
 
 
 	def index
 		@countCoursesPerPage = 5
-    @courses = Course.where(ispublished: 1).paginate(page: params[:page], per_page: 5)
+		@courses = Course.where(ispublished: 1).paginate(page: params[:page], per_page: 5)
 		@topics = Topic.order(:name)
-  	end
+	end
 
 
 	def new
@@ -28,17 +28,17 @@ before_filter :current_user, only: [:create, :edit,:update,:delete]
 	
 
 	def edit
-    	@course = Course.find(params[:id])
-  	end
+		@course = Course.find(params[:id])
+	end
 
-  	def update
-	    @course = Course.find(params[:id])
-	    if @course.update_attributes(params[:course])
-	      redirect_to @course, notice: "Successfully updated topic."
-	    else
-	      render :edit
-	    end
-  	end
+	def update
+		@course = Course.find(params[:id])
+		if @course.update_attributes(params[:course])
+			redirect_to @course, notice: "Successfully updated topic."
+		else
+			render :edit
+		end
+	end
 
 
 	def show
@@ -50,9 +50,24 @@ before_filter :current_user, only: [:create, :edit,:update,:delete]
 	end
 
 	def destroy
-	    @course = Course.find(params[:id])
-	    @course.destroy
-	    flash[:success] = "Successfully destroyed course."
-	    redirect_to courses_url
-  	end
+		@course = Course.find(params[:id])
+		@course.destroy
+		flash[:success] = "Successfully destroyed course."
+		redirect_to courses_url
+	end
+
+	def comment
+		@course = Course.find(params[:id])
+	end
+
+	def add_new_comment
+		@comment = Comment.new(params[:comment])
+		if @comment.save
+	 flash.now[:notice] = "Successfully created..."
+		else
+		render 'comment'
+		flash.now[:notice] = "error"
+	end
+
+end
 end

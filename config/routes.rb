@@ -26,4 +26,13 @@ Myapp::Application.routes.draw do
   devise_for :users
   resources :users
   match '/auth/:provider/callback' => 'authentication#create'
+
+  resources :courses do
+    member do
+      get 'comment'
+    end
+  end
+  
+
+  match "/courses/add_new_comment" => "courses#add_new_comment", :as => "add_new_comment_to_courses", :via => [:post] 
 end

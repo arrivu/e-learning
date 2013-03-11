@@ -1,11 +1,10 @@
 <% provide(:title, 'Show Course') %>
-
 <div class="container">
 	<div class="row">
 		<div class="span12">
-			<div class="hero-unit" align="center">
-				<h1>Canvas Page will appear here!!!!</h1>
-				<h2><%= link_to "Back to Courses", courses_path %></h2>
+			<div align="center">
+				<%= render @course%>
+				 <%= link_to "Add Review", {:controller => "courses", :action => "comment"} %>  
 			</div>
 		</div>
 	</div>

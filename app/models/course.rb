@@ -19,6 +19,7 @@ class Course < ActiveRecord::Base
   has_many :relationships
   has_many :topics, through: :relationships
   belongs_to :user
+  acts_as_commentable
 
 
   #before_save { |course| course.category = category.downcase }

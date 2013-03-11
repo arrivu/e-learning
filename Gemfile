@@ -49,5 +49,6 @@ gem "factory_girl_rails", ">= 4.2.0", :group => [:development, :test]
 gem 'rest-client', '1.6.7'
 gem 'json'
 gem "rails_config"
+gem 'acts_as_commentable_with_threading'
 
 
