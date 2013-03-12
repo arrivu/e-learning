@@ -1,12 +1,21 @@
 <% provide(:title, 'Show Course') %>
 
 <div class="container">
-  <div class="row">
-    <div class="span12">
-      <div align="center">
-          <%= render @course %>
-        <%= link_to "Back to Courses", courses_path %>
-      </div>
-    </div>
-  </div>
+	<div class="row">
+		<div class="span12">
+			<div>
+				<%= render @course %>
+				<div>
+					<div class="row">
+						<div class="span5 offset3">
+							<%= render :partial => 'comments/form', :locals => {:commentable => @course} %>
+						</div>
+						
+					</div>
+					<%= render :partial => 'comments/review', :locals => {:commentable => @course} %>
+				</div>
+				<%= link_to "Back to Courses", courses_path %>
+			</div>
+		</div>
+	</div>
 </div>

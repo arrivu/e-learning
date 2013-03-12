@@ -15,6 +15,7 @@
 #
 
 class Course < ActiveRecord::Base
+  acts_as_commentable
   attr_accessible :author, :desc, :image, :title, :topic_ids, :user_id, :ispublished, :releasemonth
   has_many :relationships
   has_many :topics, through: :relationships
