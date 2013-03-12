@@ -1,5 +1,5 @@
 class AuthenticationController < ApplicationController
-  
+
   def create
     auth = request.env["omniauth.auth"]
 
@@ -8,8 +8,10 @@ class AuthenticationController < ApplicationController
 
     if authentication
       # Authentication found, sign the user in.
-      #sign_in_and_redirect(:user, authentication.user)
-      login_and_redirect_user(authentication.user)
+      flash[:info] = "Welcome. #{authentication.user.name}"
+      sign_in_and_redirect(:user, authentication.user)
+
+      #login_and_redirect_user(authentication.user)
     else
       # Authentication not found, thus a new user.
       email=auth['info']['email']
@@ -22,38 +24,14 @@ class AuthenticationController < ApplicationController
         user = User.new
         user.apply_omniauth(auth)
         if user.save(:validate => false)
-          flash[:notice] = "Account created and signed in successfully."
-          #sign_in_and_redirect(:user, user)
-          login_and_redirect_user(user)
+          flash.now[:notice] = "Account created and signed in successfully."
+          sign_in_and_redirect(:user, user)
+          #login_and_redirect_user(user)
         else
-          flash[:error] = "Error while creating a user account. Please try again."
+          flash.now[:error] = "Error while creating a user account. Please try again."
           redirect_to root_url
         end
       end
     end
   end
-
-  private
-
-      def login_and_redirect_user(user)
-        #first sign-in to cas
-        cas_sign_in(user)
-        # sign-in the user in devise
-        sign_in_and_redirect(:user, user)
-      end
-
-      def cas_sign_in(user)
-        loginResponse = CASHelper::CASAPI.login(user.email, user.encrypted_password)
-        tgt = loginResponse.tgt
-        # Sets a cookie that expires in 1 hour.
-        cookies[:login] = { :value => "#{tgt}", :expires => 1.hour.from_now }
-        #cookies.permanent[:cas_token] = tgt
-      end
-
-      def cas_sign_out(user)
-        tgt = cookies['tgt']
-        CASHelper::CASAPI.logout(tgt)
-        cookies.delete('tgt')
-      end
-
 end

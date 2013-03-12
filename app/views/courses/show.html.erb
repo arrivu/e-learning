@@ -1,24 +1,12 @@
 <% provide(:title, 'Show Course') %>
-<div class="row">
-        <ul class="nav nav-pills .pull-right">
-          <li class="active">
-            <%= link_to "Courses", courses_path %>
-          </li>
-          <li><%= link_to "Tutorials", tutorials_path %></li>
-          <% if signed_in? %>
-            <li><%= link_to "Online Classes", o_classes_path %></li>
-          <% end %>
-          <li><%= link_to "Blog", blogs_path %></li>
-           <li ><%= link_to "Coaches", users_path %></li>
-        </ul>
-</div>
+
 <div class="container">
-	<div class="row">
-		<div class="span12">
-			<div class="hero-unit" align="center">
-				<h1>Canvas Page will appear here!!!!</h1>
-				<h2><%= link_to "Back to Courses", courses_path %></h2>
-			</div>
-		</div>
-	</div>
+  <div class="row">
+    <div class="span12">
+      <div align="center">
+          <%= render @course %>
+        <%= link_to "Back to Courses", courses_path %>
+      </div>
+    </div>
+  </div>
 </div>
