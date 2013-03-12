@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130307052254) do
+ActiveRecord::Schema.define(:version => 20130312105102) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -66,54 +66,6 @@ ActiveRecord::Schema.define(:version => 20130307052254) do
     t.string   "image"
     t.integer  "user_id"
   end
-
-  create_table "cas_users", :id => false, :force => true do |t|
-    t.text "email",    :null => false
-    t.text "password"
-  end
-
-  create_table "casserver_lt", :force => true do |t|
-    t.string   "ticket",          :null => false
-    t.datetime "created_on",      :null => false
-    t.datetime "consumed"
-    t.string   "client_hostname", :null => false
-  end
-
-  add_index "casserver_lt", ["ticket"], :name => "index_casserver_lt_on_ticket"
-
-  create_table "casserver_pgt", :force => true do |t|
-    t.string   "ticket",            :null => false
-    t.datetime "created_on",        :null => false
-    t.string   "client_hostname",   :null => false
-    t.string   "iou",               :null => false
-    t.integer  "service_ticket_id", :null => false
-  end
-
-  add_index "casserver_pgt", ["ticket"], :name => "index_casserver_pgt_on_ticket"
-
-  create_table "casserver_st", :force => true do |t|
-    t.string   "ticket",            :null => false
-    t.text     "service",           :null => false
-    t.datetime "created_on",        :null => false
-    t.datetime "consumed"
-    t.string   "client_hostname",   :null => false
-    t.string   "username",          :null => false
-    t.string   "type",              :null => false
-    t.integer  "granted_by_pgt_id"
-    t.integer  "granted_by_tgt_id"
-  end
-
-  add_index "casserver_st", ["ticket"], :name => "index_casserver_st_on_ticket"
-
-  create_table "casserver_tgt", :force => true do |t|
-    t.string   "ticket",           :null => false
-    t.datetime "created_on",       :null => false
-    t.string   "client_hostname",  :null => false
-    t.string   "username",         :null => false
-    t.text     "extra_attributes"
-  end
-
-  add_index "casserver_tgt", ["ticket"], :name => "index_casserver_tgt_on_ticket"
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -189,6 +141,22 @@ ActiveRecord::Schema.define(:version => 20130307052254) do
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
 
+  create_table "student_courses", :force => true do |t|
+    t.integer  "student_id"
+    t.integer  "course_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "students", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "contact_no"
+    t.integer  "user_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "taggings", :force => true do |t|
     t.integer  "blog_id"
     t.integer  "tag_id"
@@ -200,6 +168,23 @@ ActiveRecord::Schema.define(:version => 20130307052254) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "teaching_staff_courses", :force => true do |t|
+    t.integer  "course_id"
+    t.integer  "teaching_staff_id"
+    t.string   "teaching_staff_type"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  create_table "teaching_staffs", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "qualification"
+    t.integer  "user_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "topics", :force => true do |t|
