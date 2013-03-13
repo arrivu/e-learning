@@ -12,7 +12,7 @@ gem "simple_form", ">= 2.0.4"
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-linkedin'
-
+gem 'activemerchant', "1.4.2"
 gem 'omniauth-google-oauth2'
 
 gem 'oauth2'

@@ -22,7 +22,8 @@ class Course < ActiveRecord::Base
   has_many :students, :through => :student_courses
   has_many :teaching_staff_courses 
   has_many :teaching_staffs, :through => :teaching_staff_courses 
-  
+  has_one :course_status
+  has_many :course_payments
   #before_save { |course| course.category = category.downcase }
 
   validates :title, presence: true, length: { maximum: 100 }
