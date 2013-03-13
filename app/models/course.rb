@@ -20,7 +20,7 @@ class Course < ActiveRecord::Base
   has_many :relationships
   has_many :topics, through: :relationships
   belongs_to :user
-
+  letsrate_rateable "rate"
 
   #before_save { |course| course.category = category.downcase }
 

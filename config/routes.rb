@@ -1,4 +1,6 @@
 Myapp::Application.routes.draw do
+  match '/rate' => 'rater#create', :as => 'rate'
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
