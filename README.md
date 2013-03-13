@@ -1,1 +1,1 @@
-The Branch cas_integration for single sign on system enabling
+The E-learning project is providing learning platform for students
