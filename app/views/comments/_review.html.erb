@@ -1,7 +1,5 @@
 <h3 align="center"><%= pluralize(@count, "Review") %></h3>
-
 <% @comments.each do |comment| %>
-
 <% @user = User.find_by_id(comment.user_id)%>
 <%= @user.name %>
 <div class="row">

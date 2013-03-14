@@ -1,3 +1,4 @@
+
    <div class="thumbnail"> 
     <%- model_class = Tag -%>
     <div class="well-course">  
@@ -11,7 +12,6 @@
       <span class="meta-author">
        <a href="#" title="#" rel="author"><%= link_to User.find_by_id(course.user_id).name,  User.find_by_id(course.user_id) %></a>
      </span>
-
      <span class="meta-categories">
       <% course.topics.each do |topic| %>
       <a href="#" title="#"><%= link_to topic.name , topic %></a>
@@ -22,15 +22,28 @@
       <% end %>
     </span>              
   </div>
-
   <div class="clearfix"></div>
-  <div class="entry-wrap" >
+  <div class="entry-wrap">
+    <div align = "center">
    <div class="entry-thumbnail">
-     <a align="center" , title="#" href="#"   >
-      <!-- <img src="math.jpg" width="100" height="100"> -->
-      <%= link_to image_tag("#{course.image}", border: 0, width: "100", height: "100")%> 
-    </a>
-  </div><!-- end .entry-thumbnail -->
+     <a>
+        <%= link_to image_tag("#{course.image}", border: 0, width: "100", height: "100")%> 
+         <% unless url_for(:only_path => true, :overwrite_params=> { }) == '/courses?'  %>
+      <br align = "center">Has <%= pluralize(@qty, "Ratings") %>
+      <% end %>
+       <%= rating_for course, "rate" %> 
+        <% unless url_for(:only_path => true, :overwrite_params=> { }) == '/courses?'  %>
+      <% if @rated == nil  %>
+      Rate This Course
+      <% else  %>
+       Course Rated
+      <% end %>
+    <% end %>
+     </a>
+  </div>
+
+  <!-- end .entry-thumbnail -->
+  </div>
   <div class="entry-content has-post-image">
     <p class="muted" style="text-align: justify;"><%= course.desc %></p>
     <% if signed_in? %>

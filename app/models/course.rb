@@ -19,8 +19,9 @@ class Course < ActiveRecord::Base
   attr_accessible :author, :desc, :image, :title, :topic_ids, :user_id, :ispublished, :releasemonth
   has_many :relationships
   has_many :topics, through: :relationships
+  has_one  :rating_cache
   belongs_to :user
-
+  letsrate_rateable "rate"
 
   #before_save { |course| course.category = category.downcase }
 

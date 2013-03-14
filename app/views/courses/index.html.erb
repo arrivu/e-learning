@@ -9,7 +9,7 @@
         <%= will_paginate %>
        
           <%= render @courses %>
-      
+          
         <%= will_paginate %>
         <% @courses.each do |course| %>
         <% if ((course.id % @countCoursesPerPage) == 0 ) %>
