@@ -2,7 +2,16 @@ Myapp::Application.routes.draw do
  	resources :faqs
   resources :blogs
   resources :tags
-  resources :courses
+  resources :courses do
+        collection do
+          get 'course_payment'
+          get "confirm_course_payment"
+         
+        end
+         member do
+           get "confirm_course_payment"
+          end
+      end
   resources :topics
   resources :tutorials
   resources :groups

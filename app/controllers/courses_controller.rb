@@ -1,7 +1,6 @@
 class CoursesController < ApplicationController
-
-before_filter :current_user, only: [:create, :edit,:update,:delete]
-
+	before_filter :current_user, only: [:create, :edit,:update,:delete]
+   ActiveMerchant::Billing::Integrations
 
 	def index
 		@countCoursesPerPage = 5
@@ -54,5 +53,20 @@ before_filter :current_user, only: [:create, :edit,:update,:delete]
 	    @course.destroy
 	    flash[:success] = "Successfully destroyed course."
 	    redirect_to courses_url
+  	end
+  	def course_payment
+	  
+  	end
+  	def confirm_course_payment
+  		@notification = ActiveMerchant::Billing::Integrations::Ccavenue::Notification.new(request.raw_post)
+     if @notification.payment_id.present?
+      @order = Course.find_by_order_id(@notification.payment_id)
+      if @notification.complete? and @notification.valid?
+        @order.confirm!
+      else
+       @order.reject!
+      end
+    end
+	  
   	end
 end
