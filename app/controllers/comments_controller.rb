@@ -1,11 +1,13 @@
 class CommentsController < ApplicationController
 	
-	 before_filter :load_commentable
+	 before_filter :load_commentable,:except=>[:new]
 
 	# def index
 	# 	@comments =comments.recent.limit(10).all
 	# end
-
+ def new
+ 	@comment = Comment.new
+ end
 	def create
 		@comment = @commentable.comments.build(params[:comment])
 		@comment.user_id = current_user.id
@@ -22,6 +24,7 @@ class CommentsController < ApplicationController
 	protected
 
 	def load_commentable
+		debugger
 		@commentable = params[:commentable_type].camelize.constantize.find(params[:commentable_id])
 		@comments = @commentable.comments.recent.limit(10).all
 	end

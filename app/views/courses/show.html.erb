@@ -7,7 +7,9 @@
 				<div>
 					<div class="row">
 						<div class="span5 offset3">
-							<%= render :partial => 'comments/form', :locals => {:commentable => @course} %>
+
+							<%= link_to "Add reveiw",new_comment_path(:commentable=>@course,:commentable_type=>"course"), :locals => {:commentable => @course} %>
+							
 						</div>
 						
 					</div>
