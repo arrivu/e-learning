@@ -54,5 +54,6 @@ group :development do
   gem 'pg', '0.12.2'
 end
 gem 'acts_as_commentable', '3.0.1'
+gem 'letsrate'
 
 
