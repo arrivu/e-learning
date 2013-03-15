@@ -50,6 +50,9 @@ class User < ActiveRecord::Base
   has_one :students, dependent: :destroy
 
 
+
+
+  letsrate_rater
   def apply_omniauth(auth)
 	  # In previous omniauth, 'user_info' was used in place of 'raw_info'
     self.email    = auth['info']['email']
