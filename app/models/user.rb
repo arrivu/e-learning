@@ -43,6 +43,7 @@ class User < ActiveRecord::Base
   has_many :tutorials, dependent: :destroy
   has_many :blogs, dependent: :destroy
   has_many :authentication, :dependent => :delete_all
+
  
   has_many :comments
 
