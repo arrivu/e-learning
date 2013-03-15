@@ -1,5 +1,5 @@
 Myapp::Application.routes.draw do
-	resources :faqs
+ 	resources :faqs
   resources :blogs
   resources :tags
   resources :courses
