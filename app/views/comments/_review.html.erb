@@ -1,7 +1,11 @@
 <h3 align="center"><%= pluralize(@count, "Review") %></h3>
+<<<<<<< HEAD
 
 <% @comments.each do |comment| %>
 
+=======
+<% @comments.each do |comment| %>
+>>>>>>> dccdb5b12d6be8d4a29f1bf4155b4fc85b94db20
 <% @user = User.find_by_id(comment.user_id)%>
 <%= @user.name %>
 <div class="row">
@@ -24,7 +28,11 @@
 	<div class="span8 offset2">
 		<b> <%= comment.title %></b> <br>
 		<br>
+<<<<<<< HEAD
 		<%= comment.body %>
+=======
+		<%= comment.comment %>
+>>>>>>> dccdb5b12d6be8d4a29f1bf4155b4fc85b94db20
 	</div>
 </div>
 <hr>

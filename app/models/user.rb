@@ -42,7 +42,11 @@ class User < ActiveRecord::Base
   has_many :blogs, dependent: :destroy
   has_many :authentication, :dependent => :delete_all
   has_many :comments
+<<<<<<< HEAD
 
+=======
+  letsrate_rater
+>>>>>>> dccdb5b12d6be8d4a29f1bf4155b4fc85b94db20
   def apply_omniauth(auth)
 	  # In previous omniauth, 'user_info' was used in place of 'raw_info'
     self.email    = auth['info']['email']

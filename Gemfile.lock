@@ -151,6 +151,10 @@ GEM
       activesupport (>= 3.0.0)
     launchy (2.2.0)
       addressable (~> 2.3)
+<<<<<<< HEAD
+=======
+    letsrate (1.0.8)
+>>>>>>> dccdb5b12d6be8d4a29f1bf4155b4fc85b94db20
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -301,6 +305,10 @@ DEPENDENCIES
   jquery-rails
   json
   launchy (>= 2.2.0)
+<<<<<<< HEAD
+=======
+  letsrate
+>>>>>>> dccdb5b12d6be8d4a29f1bf4155b4fc85b94db20
   meta_search (>= 1.1.0.pre)
   oauth2
   omniauth

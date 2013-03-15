@@ -11,6 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20130307052254) do
 
   create_table "active_admin_comments", :force => true do |t|
@@ -45,6 +46,9 @@ ActiveRecord::Schema.define(:version => 20130307052254) do
 
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
+=======
+ActiveRecord::Schema.define(:version => 20130314093035551) do
+>>>>>>> dccdb5b12d6be8d4a29f1bf4155b4fc85b94db20
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -73,6 +77,23 @@ ActiveRecord::Schema.define(:version => 20130307052254) do
     t.datetime "updated_at", :null => false
   end
 
+<<<<<<< HEAD
+=======
+  create_table "comments", :force => true do |t|
+    t.string   "title",            :limit => 50, :default => ""
+    t.text     "comment"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.integer  "user_id"
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
+  end
+
+  add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
+  add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
+>>>>>>> dccdb5b12d6be8d4a29f1bf4155b4fc85b94db20
   create_table "courses", :force => true do |t|
     t.string   "title"
     t.string   "author"
@@ -123,6 +144,34 @@ ActiveRecord::Schema.define(:version => 20130307052254) do
     t.integer  "user_id"
   end
 
+<<<<<<< HEAD
+=======
+  create_table "rates", :force => true do |t|
+    t.integer  "rater_id"
+    t.integer  "rateable_id"
+    t.string   "rateable_type"
+    t.float    "stars",         :null => false
+    t.string   "dimension"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "rates", ["rateable_id", "rateable_type"], :name => "index_rates_on_rateable_id_and_rateable_type"
+  add_index "rates", ["rater_id"], :name => "index_rates_on_rater_id"
+
+  create_table "rating_caches", :force => true do |t|
+    t.integer  "cacheable_id"
+    t.string   "cacheable_type"
+    t.float    "avg",            :null => false
+    t.integer  "qty",            :null => false
+    t.string   "dimension"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "rating_caches", ["cacheable_id", "cacheable_type"], :name => "index_rating_caches_on_cacheable_id_and_cacheable_type"
+
+>>>>>>> dccdb5b12d6be8d4a29f1bf4155b4fc85b94db20
   create_table "relationships", :force => true do |t|
     t.integer  "course_id"
     t.integer  "topic_id"
