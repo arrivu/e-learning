@@ -36,7 +36,7 @@ gem 'linecache19', :git => 'git://github.com/mark-moseley/linecache'
 gem 'ruby-debug-base19x', '~> 0.11.30.pre4'
 gem 'ruby-debug19'
 end
-gem 'mysql2', :group => :development
+gem 'sqlite3', :group => :development
 gem "quiet_assets", ">= 1.0.1", :group => :development
 gem "better_errors", ">= 0.6.0", :group => :development
 gem "binding_of_caller", ">= 0.7.1", :group => :development, :platforms => [:mri_19, :rbx]
