@@ -43,6 +43,9 @@ before_filter :current_user, only: [:create, :edit,:update,:delete]
 
 	def show
 		@course = Course.find(params[:id])
+		@countCommentsPerPage = 5
+		@comments = @course.comments.paginate(page: params[:page], per_page: 5)
+		@count = @course.comments.count
 		# Just to redirect, needed due to button click event
 		# @courses = Course.paginate(page: params[:page], per_page: 3)
 		# @topics = Topic.all

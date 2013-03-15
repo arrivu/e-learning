@@ -1,5 +1,8 @@
 class AuthenticationController < ApplicationController
+<<<<<<< HEAD
   include CasHelper
+=======
+>>>>>>> c933bb6a95abc0e2cfb6063a416200d61508393c
 
   def create
     auth = request.env["omniauth.auth"]
@@ -9,8 +12,10 @@ class AuthenticationController < ApplicationController
 
     if authentication
       # Authentication found, sign the user in.
-      #sign_in_and_redirect(:user, authentication.user)
-      login_and_redirect_user(authentication.user)
+      flash[:info] = "Welcome. #{authentication.user.name}"
+      sign_in_and_redirect(:user, authentication.user)
+
+      #login_and_redirect_user(authentication.user)
     else
       # Authentication not found, thus a new user.
       email=auth['info']['email']
@@ -23,16 +28,17 @@ class AuthenticationController < ApplicationController
         user = User.new
         user.apply_omniauth(auth)
         if user.save(:validate => false)
-          flash[:notice] = "Account created and signed in successfully."
-          #sign_in_and_redirect(:user, user)
-          login_and_redirect_user(user)
+          flash.now[:notice] = "Account created and signed in successfully."
+          sign_in_and_redirect(:user, user)
+          #login_and_redirect_user(user)
         else
-          flash[:error] = "Error while creating a user account. Please try again."
+          flash.now[:error] = "Error while creating a user account. Please try again."
           redirect_to root_url
         end
       end
     end
   end
+<<<<<<< HEAD
 
   private
 
@@ -58,3 +64,6 @@ class AuthenticationController < ApplicationController
       end
 
 end
+=======
+end
+>>>>>>> c933bb6a95abc0e2cfb6063a416200d61508393c

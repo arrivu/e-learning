@@ -22,11 +22,13 @@
 #  sub_plan               :string(255)
 #  user_desc              :string(255)
 #  name                   :string(255)
+#  username               :string(255)
 #
 
 class User < ActiveRecord::Base
   include CasHelper
 	rolify
+  rolify
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -40,9 +42,8 @@ class User < ActiveRecord::Base
   has_many :o_classes, :class_name => "O_Classe"
   has_many :tutorials, dependent: :destroy
   has_many :blogs, dependent: :destroy
-
   has_many :authentication, :dependent => :delete_all
-
+  has_many :comments
 
   def apply_omniauth(auth)
 	  # In previous omniauth, 'user_info' was used in place of 'raw_info'

@@ -1,11 +1,23 @@
 <% provide(:title, 'Show Course') %>
+<<<<<<< HEAD
 
+=======
+>>>>>>> c933bb6a95abc0e2cfb6063a416200d61508393c
 <div class="container">
 	<div class="row">
 		<div class="span12">
-			<div class="hero-unit" align="center">
-				<h1>Canvas Page will appear here!!!!</h1>
-				<h2><%= link_to "Back to Courses", courses_path %></h2>
+			<div>
+				<%= render @course %>
+				<div>
+					<div class="row">
+						<div class="span5 offset3">
+							<%= render :partial => 'comments/form', :locals => {:commentable => @course} %>
+						</div>
+						
+					</div>
+					<%= render :partial => 'comments/review', :locals => {:commentable => @course} %>
+				</div>
+				<%= link_to "Back to Courses", courses_path %>
 			</div>
 		</div>
 	</div>
