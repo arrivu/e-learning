@@ -1,13 +1,4 @@
 Myapp::Application.routes.draw do
-<<<<<<< HEAD
-=======
-  match '/rate' => 'rater#create', :as => 'rate'
-
->>>>>>> dccdb5b12d6be8d4a29f1bf4155b4fc85b94db20
-  ActiveAdmin.routes(self)
-
-  devise_for :admin_users, ActiveAdmin::Devise.config
-
 	resources :faqs
   resources :blogs
   resources :tags

@@ -19,15 +19,10 @@ class Course < ActiveRecord::Base
   attr_accessible :author, :desc, :image, :title, :topic_ids, :user_id, :ispublished, :releasemonth
   has_many :relationships
   has_many :topics, through: :relationships
-<<<<<<< HEAD
   belongs_to :user
-
-=======
   has_one  :rating_cache
   belongs_to :user
   letsrate_rateable "rate"
->>>>>>> dccdb5b12d6be8d4a29f1bf4155b4fc85b94db20
-
   #before_save { |course| course.category = category.downcase }
 
   validates :title, presence: true, length: { maximum: 100 }

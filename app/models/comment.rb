@@ -17,15 +17,9 @@
 #
 
 class Comment < ActiveRecord::Base
-
-  include ActsAsCommentable::Comment
-<<<<<<< HEAD
-  attr_accessible :title, :body
-=======
+include ActsAsCommentable::Comment
   attr_accessible :title, :comment
->>>>>>> dccdb5b12d6be8d4a29f1bf4155b4fc85b94db20
   belongs_to :commentable, :polymorphic => true
-
   default_scope :order => 'created_at DESC'
 
   # NOTE: install the acts_as_votable plugin if you

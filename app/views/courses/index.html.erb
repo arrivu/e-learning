@@ -3,21 +3,12 @@
   <div class="row">
     <div class="span8">
       <% if @courses.size >= 1 %>
-
       <div class="well">
-        
-        <%= will_paginate %>
-       
+        <%= will_paginate %>       
           <%= render @courses %>
-<<<<<<< HEAD
-      
-=======
-          
->>>>>>> dccdb5b12d6be8d4a29f1bf4155b4fc85b94db20
         <%= will_paginate %>
         <% @courses.each do |course| %>
         <% if ((course.id % @countCoursesPerPage) == 0 ) %>
-        
         <% end %>
         <% end %>
         <div class="clearfix"></div>

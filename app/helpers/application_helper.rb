@@ -1,11 +1,7 @@
 module ApplicationHelper
 		# Returns the full title on a per-page basis.
 		def full_title(page_title)
-<<<<<<< HEAD
-			base_title = "Beacon Online"
-=======
 			base_title = "Smart coach"
->>>>>>> dccdb5b12d6be8d4a29f1bf4155b4fc85b94db20
 			@page_title = page_title
 			if page_title.empty?
 				base_title

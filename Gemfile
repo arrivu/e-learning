@@ -50,8 +50,5 @@ gem 'rest-client', '1.6.7'
 gem 'json'
 gem "rails_config"
 gem 'acts_as_commentable', '3.0.1'
-<<<<<<< HEAD
-
-=======
 gem 'letsrate'
->>>>>>> dccdb5b12d6be8d4a29f1bf4155b4fc85b94db20
+
