@@ -43,7 +43,12 @@ class User < ActiveRecord::Base
   has_many :tutorials, dependent: :destroy
   has_many :blogs, dependent: :destroy
   has_many :authentication, :dependent => :delete_all
+<<<<<<< HEAD
   has_many :comments
+=======
+  has_one :teaching_staffs, dependent: :destroy
+  has_one :students, dependent: :destroy
+>>>>>>> 25a5af3927d50d4b0f3c36b66d1705042a99ca50
 
   def apply_omniauth(auth)
 	  # In previous omniauth, 'user_info' was used in place of 'raw_info'
