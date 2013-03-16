@@ -1,8 +1,7 @@
 class AuthenticationController < ApplicationController
-<<<<<<< HEAD
+
   include CasHelper
-=======
->>>>>>> c933bb6a95abc0e2cfb6063a416200d61508393c
+
 
   def create
     auth = request.env["omniauth.auth"]
@@ -38,7 +37,7 @@ class AuthenticationController < ApplicationController
       end
     end
   end
-<<<<<<< HEAD
+
 
   private
 
@@ -64,6 +63,4 @@ class AuthenticationController < ApplicationController
       end
 
 end
-=======
-end
->>>>>>> c933bb6a95abc0e2cfb6063a416200d61508393c
+

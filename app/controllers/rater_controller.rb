@@ -1,6 +1,7 @@
 class RaterController < ApplicationController 
   
-  def create                                  
+  def create   
+
     if current_user.present?
       obj = eval "#{params[:klass]}.find(#{params[:id]})"     
       if params[:dimension].present?
@@ -11,7 +12,10 @@ class RaterController < ApplicationController
       
       render :json => true 
     else
-      render :json => false        
+       respond_to do |format|
+       format.js # index.html.erb
+       format.json { render json: false }
+       end        
     end
   end                                        
   
