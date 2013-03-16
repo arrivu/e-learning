@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20130314093035551) do
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
+
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
     t.string   "provider"
@@ -74,7 +75,7 @@ ActiveRecord::Schema.define(:version => 20130314093035551) do
     t.datetime "updated_at", :null => false
   end
 
-<<<<<<< HEAD
+
   create_table "comments", :force => true do |t|
     t.string   "title",            :limit => 50, :default => ""
     t.text     "comment"
@@ -89,8 +90,7 @@ ActiveRecord::Schema.define(:version => 20130314093035551) do
   add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
-=======
->>>>>>> 6f85d31a965ac8487fcf8ddbcaa419a57d6deaa7
+
   create_table "course_payments", :force => true do |t|
     t.integer  "course_id"
     t.float    "price"
@@ -107,6 +107,7 @@ ActiveRecord::Schema.define(:version => 20130314093035551) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
 
   create_table "courses", :force => true do |t|
     t.string   "title"

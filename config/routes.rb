@@ -29,7 +29,6 @@ Myapp::Application.routes.draw do
 	match '/terms', :to => 'screens#terms'
   #match '/faq', :to => 'screens#faq'
   match '/construction', :to => 'screens#construction'  
-  devise_for :users, controllers: { registrations: "registrations",  sessions: "sessions"   }
   devise_for :users
   resources :users
   match '/auth/:provider/callback' => 'authentication#create'

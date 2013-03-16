@@ -1,30 +1,32 @@
-  <div class="thumbnail"> 
-    <%- model_class = Tag -%>
-    <div class="well-course">  
-     <h4><%= link_to course.title, course %>
-       <!-- <img src="images/dmbtest.gif" width="45px" height="45px" /> -->
-       <%= link_to image_tag("#{course.image}", width: "30", height: "30")%>
-     </h4>
-     <div class="clearfix">
-     </div>
-     <div class="entry-meta">
-      <span class="meta-author">
-       <a href="#" title="#" rel="author"><%= link_to User.find_by_id(course.user_id).name,  User.find_by_id(course.user_id) %></a>
-     </span>
-     <span class="meta-categories">
-      <% course.topics.each do |topic| %>
-      <a href="#" title="#"><%= link_to topic.name , topic %></a>
-      <% if course.topics.last.name == topic.name %>
-      <% else %>
-      <span class="cat-sep">\</span>
-      <% end %>
-      <% end %>
-    </span>              
-  </div>
-  <div class="clearfix"></div>
-  <div class="entry-wrap">
-    <div align = "center">
+<div class="thumbnail"> 
+  <%- model_class = Tag -%>
+  <div class="well-course">  
+   <h4><%= link_to course.title, course %>
+     <!-- <img src="images/dmbtest.gif" width="45px" height="45px" /> -->
+     <%= link_to image_tag("#{course.image}", width: "30", height: "30")%>
+   </h4>
+   <div class="clearfix">
+   </div>
+   <div class="entry-meta">
+    <span class="meta-author">
+     <a href="#" title="#" rel="author"><%= link_to User.find_by_id(course.user_id).name,  User.find_by_id(course.user_id) %></a>
+   </span>
+   <span class="meta-categories">
+    <% course.topics.each do |topic| %>
+    <a href="#" title="#"><%= link_to topic.name , topic %></a>
+    <% if course.topics.last.name == topic.name %>
+    <% else %>
+    <span class="cat-sep">\</span>
+    <% end %>
+    <% end %>
+  </span>              
+</div>
+<div class="clearfix"></div>
+<table class="table table-hover"> 
+  <tr>
+    <td>  
      <div class="entry-thumbnail">
+      <div align="center">
        <a>
         <%= link_to image_tag("#{course.image}", border: 0, width: "100", height: "100")%> 
         <% unless url_for(:only_path => true, :overwrite_params=> { }) == '/courses?'  %>
@@ -41,8 +43,12 @@
       </a>
     </div>
 
-    <!-- end .entry-thumbnail -->
   </div>
+  
+</td>
+<td>
+  <!-- end .entry-thumbnail -->
+
   <div class="entry-content has-post-image">
     <p class="muted" style="text-align: justify;"><%= course.desc %></p>
     <% if signed_in? %>
@@ -64,7 +70,14 @@
     <% end %>
 
   </div><!-- end .entry-content -->         
-  </div>
-  <div class="clearfix"></div>
-  </div>
-  </div><br>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<br>
+
+
+
+
