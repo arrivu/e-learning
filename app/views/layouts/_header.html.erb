@@ -10,12 +10,6 @@
 				<ul class="nav pull-right">
 					<!-- <li class="active"> -->
 					<li>
-						<%= link_to "Home", root_path %>
-					</li>
-					<li>
-						<%= link_to "About", about_path %>
-					</li>
-					<li>
 						<%= link_to "Course", courses_path %>
 					</li>
 					<% if signed_in? %>
@@ -41,9 +35,9 @@
 						</ul>
 					</li>
 					<% else %>
-					<li><%= link_to "Sign in", new_user_session_path %></li>
+					<li><a href="#sign_in_Modal" role="button" class="link" data-toggle="modal">Login</a></li>
 					<li>
-						<%= link_to "Subscribe", new_user_registration_path %>
+						 <a href="#sign_up_Modal" role="button" class="link" data-toggle="modal">Create Account</a>
 					</li>
 					<% end %>
 
