@@ -283,9 +283,7 @@ PLATFORMS
 DEPENDENCIES
   active_merchant_ccavenue
   activemerchant
-
   acts_as_commentable (= 3.0.1)
-
   best_in_place
   better_errors (>= 0.6.0)
   binding_of_caller (>= 0.7.1)
