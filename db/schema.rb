@@ -13,6 +13,7 @@
 
 ActiveRecord::Schema.define(:version => 20130314093035551) do
 
+
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
     t.string   "resource_type", :null => false
@@ -73,6 +74,7 @@ ActiveRecord::Schema.define(:version => 20130314093035551) do
     t.datetime "updated_at", :null => false
   end
 
+<<<<<<< HEAD
   create_table "comments", :force => true do |t|
     t.string   "title",            :limit => 50, :default => ""
     t.text     "comment"
@@ -87,6 +89,8 @@ ActiveRecord::Schema.define(:version => 20130314093035551) do
   add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
+=======
+>>>>>>> 6f85d31a965ac8487fcf8ddbcaa419a57d6deaa7
   create_table "course_payments", :force => true do |t|
     t.integer  "course_id"
     t.float    "price"

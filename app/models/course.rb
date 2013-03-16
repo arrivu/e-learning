@@ -28,6 +28,10 @@ class Course < ActiveRecord::Base
   has_one  :rating_cache
   belongs_to :user
   letsrate_rateable "rate"
+
+  has_one :course_status
+  has_many :course_payments
+
   #before_save { |course| course.category = category.downcase }
 
   validates :title, presence: true, length: { maximum: 100 }
